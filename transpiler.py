@@ -83,11 +83,12 @@ def generateFolderValue(folder_sub, content_value):
     return folder_sub
 
 def generateFolderArr(instructions_arr, program_name):
-    folders_arr = [{"name": program_name, "sub": [{}]}]
-    folders = folders_arr[0]["sub"][0]
+    folders_arr = [{"name": program_name, "sub": []}]
+    folders_sub = folders_arr[0]["sub"]
     i = 0
     for instruction in instructions_arr:
-        folders["name"] = str(i+1)+"_"+instruction["type"]
+        folders_sub.append({"name": str(i+1)+"_"+instruction["type"], "sub": []})
+        folders = folders_sub[i]
         folders["sub"] = [
             {
                 "name": "1_Type_Of_Command",
